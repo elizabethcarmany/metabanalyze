@@ -1,0 +1,15 @@
+Package: metabanalyze
+Type: Package
+Title: Easier Visualization of Metabolomics
+Version: 0.1.0
+Author: Elizabeth Carmany [aut, cre]
+Maintainer: Elizabeth Carmany <elizabethanncarmany@hotmail.com>
+Description: This package provides sample metabolomics data. 
+  The package's functions include the creation of boxplots, lineplots,
+  PCA plots and heat maps. Using the sample metabolomics data allows 
+  for easy testing of the functions in the package.
+License: wtfpl
+Encoding: UTF-8
+LazyData: true
+Imports: usethis, tidyr, knitr, remotes, readxl, ggplot2, dplyr, ggrepel, data.table, reshape2, janitor, LearnBayes, ggbiplot, RColorBrewer, stats,
+RoxygenNote: 7.1.1
