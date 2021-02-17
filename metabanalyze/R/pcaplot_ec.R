@@ -1,9 +1,9 @@
 #' Creation of a PCA plot
 #'
-#'@name pcaplot
+#'@name pcaplot_ec
 #'
 #' @description
-#' `pcaplot` returns a created PCA plot based on the dataset and
+#' `pcaplot_ec` returns a created PCA plot based on the dataset and
 #' various specifications inserted into the function, as well as labels
 #' for title and axis.
 #'
@@ -16,7 +16,9 @@
 #'@param
 #' dataset what dataset you want to be used in the
 #' creation of the rest of the PCA plot.
-pcaplot <- function(dataset, ellipse, groupedby, axes, adjustnamevar, namevarsize, xlabel, ylabel, title )
+#'
+#' @export pcaplot_ec
+pcaplot_ec <- function(dataset, ellipse=FALSE, groupedby=NULL, axes=FALSE, adjustnamevar=1, namevarsize=5, xlabel=NULL, ylabel=NULL, title=NULL )
 {
   ggbiplot::ggbiplot(dataset,
            #'@param
@@ -27,13 +29,13 @@ pcaplot <- function(dataset, ellipse, groupedby, axes, adjustnamevar, namevarsiz
            groups =groupedby,
            #'@param
            #'axes is a TRUE or FALSE input deciding if arrows for variables are created.
-           var.axes=axes,
+           var.axes = axes,
            #'@param
            #'adjustnamevar is how far the name / label is from the arrow.
            varname.adjust=adjustnamevar,
            #'@param
            #'namevarsize is how large the labels are for the arrows
-           varname.size = namevarsize)+
+           varname.size = namevarsize)
     #'labs creates the label
     #'@param
     #'xlabel determines what the x axis is labeled.

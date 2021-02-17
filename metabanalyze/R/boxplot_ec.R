@@ -1,9 +1,9 @@
 #'Creation of a boxplot
 #'
-#' @name boxplot
+#' @name boxplot_ec
 #'
 #' @description
-#' `boxplot` returns a created boxplot based on the dataset and characteristics
+#' `boxplot_ec` returns a created boxplot based on the dataset and characteristics
 #' inputed into the function, as well as labels for title and axis.
 #'
 #' @details
@@ -14,9 +14,9 @@
 #'
 #'
 #'
-#'
+#' @export boxplot_ec
 usethis::use_package("ggplot2")
-boxplot <- function (dataset, xvar, yvar, fill, notch, widthnotch, graphorientation, legend, xlabel, ylabel, title){
+boxplot_ec <- function (dataset, xvar= NULL, yvar=NULL, fill=NULL, notch=FALSE, widthnotch=0.5, graphorientation=NA, legend=NA, xlabel=NULL, ylabel=NULL, title=NULL){
   #' The ggplot sets up the creation of a plot.
   #' @param
   #' dataset what dataset you want to be used in the
@@ -54,3 +54,5 @@ boxplot <- function (dataset, xvar, yvar, fill, notch, widthnotch, graphorientat
          #'title specifies what the title of the graph is.
          title=title)
 }
+
+

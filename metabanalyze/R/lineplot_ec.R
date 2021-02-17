@@ -1,9 +1,9 @@
 #' Creation of a line graph
 #'
-#' @name lineplot
+#' @name lineplot_ec
 #'
 #' @description
-#' `lineplot` returns a created line graph based on the dataset and
+#' `lineplot_ec` returns a created line graph based on the dataset and
 #' various specifications inputed into the function, as well as labels
 #' for title and axis.
 #'
@@ -15,7 +15,10 @@
 #'The ggplot sets up the creation of a plot.
 #'@param
 #' dataset what dataset you want to be used in the creation of the rest of the line graph.
-lineplot <- function (dataset, xvar, yvar, color, linesize, legend, poslegend, xlabel, ylabel, title)
+#'
+#' @export lineplot_ec
+usethis::use_package("ggplot2")
+lineplot_ec <- function (dataset, xvar=NULL, yvar=NULL, color=NULL, linesize=NULL, legend=NA, poslegend=NULL, xlabel=NULL, ylabel=NULL, title=NULL)
 {
   ggplot2::ggplot(dataset) +
     #'This  geom_line specifies a boxplot will be created.
@@ -36,7 +39,7 @@ lineplot <- function (dataset, xvar, yvar, color, linesize, legend, poslegend, x
               show.legend = legend)+
     #'theme adds another specification we can add.
     #'@param
-    #'poslegend is where on the graph the legend should be.
+    #'poslegend is where on the graph the legend should be. Acceptable arguments include: "left", "right", "bottom", "top".
     ggplot2::theme(legend.position = poslegend)+
     #'labs creates the label.
     #'@param
@@ -49,3 +52,4 @@ lineplot <- function (dataset, xvar, yvar, color, linesize, legend, poslegend, x
          #'title specifies what the title of the graph is.
          title =title)
 }
+

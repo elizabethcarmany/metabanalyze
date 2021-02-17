@@ -1,25 +1,28 @@
 #' Creation of a heatmap.
 #'
-#' @name heatmap
+#' @name heatmap_ec
 #'
 #' @description
-#' `heat_map` returns a created heatmap based on the dataset and characteristics
+#' `heat_map_ec` returns a created heatmap based on the dataset and characteristics
 #' you enter into the function, as well as labels.
 #'
 #' @details
 #' This function has several arguments that can be added or removed to make
 #' the heatmap more flexible to the visual wanted.
 #'
+
 usethis::use_package("stats")
-heatmap <- function (dataset, rowdendrogram, coldendrogram, heatmapcolor, ycolor, xcolor, title, xlabel, ylabel){
+usethis::use_package("RColorBrewer")
+#'@export heatmap_ec
+heatmap_ec <- function (dataset, rowdendrogram=NULL, coldendrogram=NULL, heatmapcolor=brewer.pal(9,"Blues"), ycolor, xcolor, title=NULL, xlabel=NULL, ylabel=NULL){
   #'@param
   #'dataset what dataset you want to be used in the creation of the heatmap.
   stats::heatmap(as.matrix(dataset),
           #'@param
-          #'rowdendrogram informs the program whether or not a dendrogram should be included on the y axis.
+          #'rowdendrogram informs the program whether or not a dendrogram should be included on the y axis. By default it will create the dendrogram. Setting it equal to NA will get rid of the dendrogram.
           Rowv=rowdendrogram,
           #'@param
-          #'coldendrogram informs the program whether or not a dendrogram should be included on the y axis.
+          #'coldendrogram informs the program whether or not a dendrogram should be included on the y axis. By default it will create the dendrogram. Setting it equal to NA will get rid of the dendrogram.
           Colv=coldendrogram,
           #' @param
           #'heatmapcolor is what color the heatmap with be created in shades of.
@@ -40,4 +43,5 @@ heatmap <- function (dataset, rowdendrogram, coldendrogram, heatmapcolor, ycolor
           #'ylabel is what the y axis label wil be.
           ylab = ylabel)
 }
+
 
