@@ -11,9 +11,9 @@ pcaplot_ec(
   axes = FALSE,
   adjustnamevar = 1,
   namevarsize = 5,
-  xlabel = NULL,
-  ylabel = NULL,
-  title = NULL
+  xlabel = NA,
+  ylabel = NA,
+  title = NA
 )
 }
 \arguments{

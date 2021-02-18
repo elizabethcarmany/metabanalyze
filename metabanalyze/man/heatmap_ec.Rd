@@ -11,9 +11,9 @@ heatmap_ec(
   heatmapcolor = brewer.pal(9, "Blues"),
   ycolor,
   xcolor,
-  title = NULL,
-  xlabel = NULL,
-  ylabel = NULL
+  title = NA,
+  xlabel = NA,
+  ylabel = NA
 )
 }
 \arguments{

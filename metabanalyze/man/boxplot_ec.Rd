@@ -13,9 +13,9 @@ boxplot_ec(
   widthnotch = 0.5,
   graphorientation = NA,
   legend = NA,
-  xlabel = NULL,
-  ylabel = NULL,
-  title = NULL
+  xlabel = NA,
+  ylabel = NA,
+  title = NA
 )
 }
 \arguments{

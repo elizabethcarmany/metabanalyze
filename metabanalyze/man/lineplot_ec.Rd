@@ -12,9 +12,9 @@ lineplot_ec(
   linesize = NULL,
   legend = NA,
   poslegend = NULL,
-  xlabel = NULL,
-  ylabel = NULL,
-  title = NULL
+  xlabel = NA,
+  ylabel = NA,
+  title = NA
 )
 }
 \arguments{
