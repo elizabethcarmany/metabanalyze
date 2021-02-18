@@ -35,7 +35,7 @@ pcaplot_ec <- function(dataset, ellipse=FALSE, groupedby=NULL, axes=FALSE, adjus
            varname.adjust=adjustnamevar,
            #'@param
            #'namevarsize is how large the labels are for the arrows
-           varname.size = namevarsize)
+           varname.size = namevarsize)+
     #'labs creates the label
     #'@param
     #'xlabel determines what the x axis is labeled.
