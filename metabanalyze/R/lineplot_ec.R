@@ -18,7 +18,7 @@
 #'
 #' @export lineplot_ec
 usethis::use_package("ggplot2")
-lineplot_ec <- function (dataset, xvar=NULL, yvar=NULL, color=NULL, linesize=NULL, legend=NA, poslegend=NULL, xlabel=NULL, ylabel=NULL, title=NULL)
+lineplot_ec <- function (dataset, xvar=NULL, yvar=NULL, color=NULL, linesize=NULL, legend=NA, poslegend=NULL, xlabel=NA, ylabel=NA, title=NA)
 {
   ggplot2::ggplot(dataset) +
     #'This  geom_line specifies a boxplot will be created.

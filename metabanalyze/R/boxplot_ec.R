@@ -16,7 +16,7 @@
 #'
 #' @export boxplot_ec
 usethis::use_package("ggplot2")
-boxplot_ec <- function (dataset, xvar= NULL, yvar=NULL, fill=NULL, notch=FALSE, widthnotch=0.5, graphorientation=NA, legend=NA, xlabel=NULL, ylabel=NULL, title=NULL){
+boxplot_ec <- function (dataset, xvar= NULL, yvar=NULL, fill=NULL, notch=FALSE, widthnotch=0.5, graphorientation=NA, legend=NA, xlabel=NA, ylabel=NA, title=NA){
   #' The ggplot sets up the creation of a plot.
   #' @param
   #' dataset what dataset you want to be used in the

@@ -14,7 +14,7 @@
 usethis::use_package("stats")
 usethis::use_package("RColorBrewer")
 #'@export heatmap_ec
-heatmap_ec <- function (dataset, rowdendrogram=NULL, coldendrogram=NULL, heatmapcolor=brewer.pal(9,"Blues"), ycolor, xcolor, title=NULL, xlabel=NULL, ylabel=NULL){
+heatmap_ec <- function (dataset, rowdendrogram=NULL, coldendrogram=NULL, heatmapcolor=brewer.pal(9,"Blues"), ycolor, xcolor, title=NA, xlabel=NA, ylabel=NA){
   #'@param
   #'dataset what dataset you want to be used in the creation of the heatmap.
   stats::heatmap(as.matrix(dataset),

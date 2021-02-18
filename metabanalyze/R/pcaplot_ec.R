@@ -18,7 +18,7 @@
 #' creation of the rest of the PCA plot.
 #'
 #' @export pcaplot_ec
-pcaplot_ec <- function(dataset, ellipse=FALSE, groupedby=NULL, axes=FALSE, adjustnamevar=1, namevarsize=5, xlabel=NULL, ylabel=NULL, title=NULL )
+pcaplot_ec <- function(dataset, ellipse=FALSE, groupedby=NULL, axes=FALSE, adjustnamevar=1, namevarsize=5, xlabel=NA, ylabel=NA, title=NA )
 {
   ggbiplot::ggbiplot(dataset,
            #'@param
