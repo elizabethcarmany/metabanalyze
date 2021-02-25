@@ -13,7 +13,10 @@ heatmap_ec(
   xcolor,
   title = NA,
   xlabel = NA,
-  ylabel = NA
+  ylabel = NA,
+  font = "Times New Roman",
+  fontsize = 18,
+  filename = "graph.svg"
 )
 }
 \arguments{
@@ -34,6 +37,12 @@ heatmap_ec(
 \item{xlabel}{is what the x axis label will be}
 
 \item{ylabel}{is what the y axis label wil be.}
+
+\item{font}{determines the font type that is used.}
+
+\item{fontsize}{determines the font type that is used.}
+
+\item{filename}{specifies the name and filetype that the graph is saved as.}
 }
 \description{
 `heat_map_ec` returns a created heatmap based on the dataset and characteristics

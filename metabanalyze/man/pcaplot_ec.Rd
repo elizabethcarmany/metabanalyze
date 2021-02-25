@@ -13,7 +13,10 @@ pcaplot_ec(
   namevarsize = 5,
   xlabel = NA,
   ylabel = NA,
-  title = NA
+  title = NA,
+  font = "Times New Roman",
+  fontsize = 18,
+  filename = "graph.svg"
 )
 }
 \arguments{
@@ -36,6 +39,12 @@ labs creates the label}
 \item{ylabel}{determines what the y axis is labeled.}
 
 \item{title}{specifies what the title of the graph is.}
+
+\item{font}{determines the font type that is used.}
+
+\item{fontsize}{determines the font type that is used.}
+
+\item{filename}{specifies the name and filetype that the graph is saved as.}
 }
 \description{
 `pcaplot_ec` returns a created PCA plot based on the dataset and

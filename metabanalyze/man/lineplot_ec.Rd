@@ -14,7 +14,10 @@ lineplot_ec(
   poslegend = NULL,
   xlabel = NA,
   ylabel = NA,
-  title = NA
+  title = NA,
+  font = "Times New Roman",
+  fontsize = 18,
+  filename = "graph.svg"
 )
 }
 \arguments{
@@ -39,6 +42,12 @@ labs creates the label.}
 \item{ylabel}{determines what the y axis is labeled.}
 
 \item{title}{specifies what the title of the graph is.}
+
+\item{font}{determines the font type that is used.}
+
+\item{fontsize}{determines the font type that is used.}
+
+\item{filename}{specifies the name and filetype that the graph is saved as.}
 }
 \description{
 `lineplot_ec` returns a created line graph based on the dataset and
