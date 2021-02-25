@@ -15,8 +15,10 @@
 #'
 #'
 #' @export boxplot_ec
+usethis::use_package("extrafont")
 usethis::use_package("ggplot2")
-boxplot_ec <- function (dataset, xvar= NULL, yvar=NULL, fill=NULL, notch=FALSE, widthnotch=0.5, graphorientation=NA, legend=NA, xlabel=NA, ylabel=NA, title=NA){
+usethis::use_package("svglite")
+boxplot_ec <- function (dataset, xvar= NULL, yvar=NULL, fill=NULL, notch=FALSE, widthnotch=0.5, graphorientation=NA, legend=NA, xlabel=NA, ylabel=NA, title=NA, font="Times New Roman", fontsize=18, filename="graph.svg"){
   #' The ggplot sets up the creation of a plot.
   #' @param
   #' dataset what dataset you want to be used in the
@@ -42,7 +44,7 @@ boxplot_ec <- function (dataset, xvar= NULL, yvar=NULL, fill=NULL, notch=FALSE, 
                  #' or y (which will rotate the graph so that it is horizontal).
                  orientation = graphorientation,
                  #'@param legend is a true or false value that will determine if the legend is there or not.
-                 show.legend= legend, )+
+                 show.legend= legend)+
     #'labs creates the label
     #'@param
     #'xlabel determines what the x axis is labeled.
@@ -52,7 +54,16 @@ boxplot_ec <- function (dataset, xvar= NULL, yvar=NULL, fill=NULL, notch=FALSE, 
          y= ylabel,
          #'@param
          #'title specifies what the title of the graph is.
-         title=title)
+         title=title)+
+    theme(text=element_text(family=font,
+                            #'@param
+                            #'font determines the font type that is used.
+                            size=fontsize))+
+                            #'@param
+                            #'fontsize determines the font type that is used.
+    ggplot2::ggsave(file=filename)
+    #'@param
+    #'filename specifies the name and filetype that the graph is saved as.
 }
 
 

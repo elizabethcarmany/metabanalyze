@@ -18,7 +18,9 @@
 #' creation of the rest of the PCA plot.
 #'
 #' @export pcaplot_ec
-pcaplot_ec <- function(dataset, ellipse=FALSE, groupedby=NULL, axes=FALSE, adjustnamevar=1, namevarsize=5, xlabel=NA, ylabel=NA, title=NA )
+usethis::use_package("extrafont")
+usethis::use_package("svglite")
+pcaplot_ec <- function(dataset, ellipse=FALSE, groupedby=NULL, axes=FALSE, adjustnamevar=1, namevarsize=5, xlabel=NA, ylabel=NA, title=NA, font="Times New Roman", fontsize=18, filename="graph.svg" )
 {
   ggbiplot::ggbiplot(dataset,
            #'@param
@@ -45,6 +47,15 @@ pcaplot_ec <- function(dataset, ellipse=FALSE, groupedby=NULL, axes=FALSE, adjus
          y= ylabel,
          #'@param
          #'title specifies what the title of the graph is.
-         title=title)
+         title=title)+
+    theme(text=element_text(family=font,
+                            #'@param
+                            #'font determines the font type that is used.
+                            size=fontsize))+
+                            #'@param
+                            #'fontsize determines the font type that is used.
+    ggplot2::ggsave(file=filename)
+    #'@param
+    #'filename specifies the name and filetype that the graph is saved as.
 
 }

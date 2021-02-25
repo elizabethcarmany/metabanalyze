@@ -11,10 +11,12 @@
 #' the heatmap more flexible to the visual wanted.
 #'
 
+usethis::use_package("extrafont")
 usethis::use_package("stats")
 usethis::use_package("RColorBrewer")
+usethis::use_package("svglite")
 #'@export heatmap_ec
-heatmap_ec <- function (dataset, rowdendrogram=NULL, coldendrogram=NULL, heatmapcolor=brewer.pal(9,"Blues"), ycolor, xcolor, title=NA, xlabel=NA, ylabel=NA){
+heatmap_ec <- function (dataset, rowdendrogram=NULL, coldendrogram=NULL, heatmapcolor=brewer.pal(9,"Blues"), ycolor, xcolor, title=NA, xlabel=NA, ylabel=NA, font="Times New Roman", fontsize=18, filename="graph.svg"){
   #'@param
   #'dataset what dataset you want to be used in the creation of the heatmap.
   stats::heatmap(as.matrix(dataset),
@@ -41,7 +43,16 @@ heatmap_ec <- function (dataset, rowdendrogram=NULL, coldendrogram=NULL, heatmap
           xlab = xlabel,
           #'@param
           #'ylabel is what the y axis label wil be.
-          ylab = ylabel)
+          ylab = ylabel)+
+    theme(text=element_text(family=font,
+                            #'@param
+                            #'font determines the font type that is used.
+                            size=fontsize))+
+                            #'@param
+                            #'fontsize determines the font type that is used.
+    ggplot2::ggsave(file=filename)
+    #'@param
+    #'filename specifies the name and filetype that the graph is saved as.
 }
 
 

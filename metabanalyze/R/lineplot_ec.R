@@ -18,7 +18,9 @@
 #'
 #' @export lineplot_ec
 usethis::use_package("ggplot2")
-lineplot_ec <- function (dataset, xvar=NULL, yvar=NULL, color=NULL, linesize=NULL, legend=NA, poslegend=NULL, xlabel=NA, ylabel=NA, title=NA)
+usethis::use_package("extrafont")
+usethis::use_package("svglite")
+lineplot_ec <- function (dataset, xvar=NULL, yvar=NULL, color=NULL, linesize=NULL, legend=NA, poslegend=NULL, xlabel=NA, ylabel=NA, title=NA, font="Times New Roman", fontsize=18, filename="graph.svg" )
 {
   ggplot2::ggplot(dataset) +
     #'This  geom_line specifies a boxplot will be created.
@@ -50,6 +52,15 @@ lineplot_ec <- function (dataset, xvar=NULL, yvar=NULL, color=NULL, linesize=NUL
          y =ylabel,
          #'@param
          #'title specifies what the title of the graph is.
-         title =title)
+         title =title)+
+    theme(text=element_text(family=font,
+                            #'@param
+                            #'font determines the font type that is used.
+                            size=fontsize))+
+                            #'@param
+                            #'fontsize determines the font type that is used.
+    ggplot2::ggsave(file=filename)
+    #'@param
+    #'filename specifies the name and filetype that the graph is saved as.
 }
 
