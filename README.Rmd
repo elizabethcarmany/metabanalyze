@@ -1,4 +1,3 @@
-# metabanalyze
 ---
 title: "Metabanalyze"
 author: "Elizabeth Carmany"
@@ -8,7 +7,6 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
 library("usethis")
 library("tidyr")
 library("remotes")
@@ -25,15 +23,11 @@ library("RColorBrewer")
 library("extrafont")
 library("svglite")
 library("devtools")
-
-
 C18named <- read.csv("/home/data_analysis/Documents/capstone_metabolomics/raw_data/C18_named.txt", sep="\t")
 C18factors <- read_excel("/home/data_analysis/Documents/capstone_metabolomics/raw_data/subbed_c8_factors1.xls")
-
 C18factors <-as.data.frame(C18factors)
 rownames(C18factors) <- C18factors[,1]
 C18factors <-C18factors[-c(1)]
-
 C18namedclean = head(C18named,213)
 melt(data = C18namedclean, id.vars=c("metabolite_name"))
 C18namedclean[C18namedclean== ""] <- NA
@@ -74,18 +68,63 @@ diagnosisofc18 <- as.data.frame(total_c18metabolites$Diagnosis)
 CDdiagnosisofc18 = as.data.frame(diagnosisofc18[total_c18metabolites$Diagnosis == "CD", ])
 nonBDdiagnosisofc18 = as.data.frame(diagnosisofc18[total_c18metabolites$Diagnosis == "nonIBD", ])
 UCdiagnosisofc18 = as.data.frame(diagnosisofc18[total_c18metabolites$Diagnosis == "UC", ])
-
 CDdiagnosisofc18color<- merge(CDdiagnosisofc18, "red")
 colnames(CDdiagnosisofc18color) <- c("Diagnosis", "Color")
 nonBDdiagnosisofc18color<- merge(nonBDdiagnosisofc18, "green")
 colnames(nonBDdiagnosisofc18color) <- c("Diagnosis", "Color")
 UCdiagnosisofc18color<- merge(UCdiagnosisofc18, "blue")
 colnames(UCdiagnosisofc18color) <- c("Diagnosis", "Color")
-
 metaboliteswithcolor <- rbind(CDdiagnosisofc18color, nonBDdiagnosisofc18color,UCdiagnosisofc18color)
-
 C18named1= str(C18named)
 C18factors1 = str(C18factors)
+```
+
+# Overview
+
+Metabanalyze is a package for creating heatmaps, lineplots, pca plots and boxplots. Metabanalyze creates easier visualizations of tabular data. Provided n the package is sample raw metabolomics data. The data is metabolites measured using c18 chromatography. Provided are the named data and the data for factors to analyze. Metabanlyze has many specifications to make more complex visuals, however, it also allows for simple concise code for more simple graphics.
+
+# Installation
+
+```{r, eval = FALSE}
+# The easiest way to get metabanalyze is to install it by
+install.packages("metabanalyze")
+# Or the development version from GitHub:
+# install.packages("devtools")
+devtools::install_github("elizabethcarmany/metabanalyze")
+```
+
+# Graphs Created by Metabanalyze
+
+## List of Functions
+The following are the functions in Metabanalyze.
+
+`heatmap_ec()`
+
+`pcaplot_ec()`
+
+`lineplot_ec()`
+
+`boxplot_ec()`
+
+Below are examples of the graphics that can be created. Some of the various arguments are shown. More are shown in the manual files.
+ 
+## Heatmap
+
+```{r}
+metabanalyze::heatmap_ec(dataset=as.matrix(C18namedclean2), rowdendrogram = NA, coldendrogram = NA, ycolor=metaboliteswithcolor$Color, xlabel="Metabolites measured", ylabel= "Samples", title= "C18 metabolites measured monitoring bowels diseases")
+```
 
 
+## PCA plot
+```{r}
+metabanalyze::pcaplot_ec(c18swapped.pca, ellipse=TRUE, groupedby = total_c18metabolites$`Abdominal_ pain`, axes=TRUE, xlabel = "", ylabel = "", title ="Metabolites of C18 Separated by Abdominal Pain")
+```
+
+## Line Plot
+```{r}
+metabanalyze::lineplot_ec(metabolitec18sample, xvar=metabolitec18sample$Age, yvar=metabolitec18sample$myristate, color=metabolitec18sample$sex, legend=TRUE, poslegend = "top", xlabel= "Age", ylabel = "Myristate Metabolite", title = "Myristate Samples Compared  Using Age and Sex")
+```
+## Boxplot
+```{r}
+metabanalyze::boxplot_ec(total_c18metabolites, yvar= total_c18metabolites$hydrocinnamate, fill=total_c18metabolites$Diagnosis, notch=TRUE, widthnotch = .8, legend = TRUE, xlabel = "Diagnosis", ylabel ="Number of Samples Containing Hydrocinnamate", title ="Data Hydrocinnamate Samples Separated by Diagnosis")
 ```
