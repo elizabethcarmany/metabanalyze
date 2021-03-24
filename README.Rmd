@@ -1,0 +1,91 @@
+# metabanalyze
+---
+title: "Metabanalyze"
+author: "Elizabeth Carmany"
+date: "3/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library("usethis")
+library("tidyr")
+library("remotes")
+library("readxl")
+library("ggplot2")
+library("dplyr")
+library("ggrepel")
+library("data.table")
+library("reshape2")
+library("janitor")
+library("LearnBayes")
+library("ggbiplot")
+library("RColorBrewer")
+library("extrafont")
+library("svglite")
+library("devtools")
+
+
+C18named <- read.csv("/home/data_analysis/Documents/capstone_metabolomics/raw_data/C18_named.txt", sep="\t")
+C18factors <- read_excel("/home/data_analysis/Documents/capstone_metabolomics/raw_data/subbed_c8_factors1.xls")
+
+C18factors <-as.data.frame(C18factors)
+rownames(C18factors) <- C18factors[,1]
+C18factors <-C18factors[-c(1)]
+
+C18namedclean = head(C18named,213)
+melt(data = C18namedclean, id.vars=c("metabolite_name"))
+C18namedclean[C18namedclean== ""] <- NA
+C18namedclean <- drop_na(C18namedclean)
+rownames(C18namedclean) <- C18namedclean[,1]
+C18namedclean2 <- C18namedclean
+C18namedclean2  <- t(C18namedclean)
+C18namedclean2 <- as.data.frame(C18namedclean2)
+C18namedclean2 <- C18namedclean2 %>% row_to_names(row_number = 1)
+C18namedclean2 <-C18namedclean2[-c(1:2)]
+C18namedclean2 <- C18namedclean2 %>% rename_all(function(C18namedclean2) gsub(" ", "_", C18namedclean2))
+C18namedclean2 <- C18namedclean2 %>% rename_all(function(C18namedclean2) gsub(":", "_", C18namedclean2))
+C18namedclean2 <-C18namedclean2[-c(1),]
+C18namedclean2 <- data.matrix(C18namedclean2)
+C18namedclean2set <-as.data.frame(C18namedclean2)
+total_c18metabolites <-merge(C18namedclean2set, C18factors, by=0)
+total_c18metabolites <- as.data.frame(total_c18metabolites)
+metabolitec18sample <- sample_n(total_c18metabolites, 150)
+c18swapped.pca <- prcomp(C18namedclean2[,c(1:4)], center = TRUE,scale. = TRUE)
+c18ten_at_diagosis <- total_c18metabolites[total_c18metabolites$Age_at_diagnosis == '10',]
+c18subset_metabolites <- sample (total_c18metabolites, 5)
+c18swappeddata <- as_data_frame(C18namedclean2)
+c18swappedsub <- sample(c18swappeddata, 5)
+c18diagnosis <- as_data_frame(total_c18metabolites$Diagnosis)
+colnames(c18diagnosis) <- "Diagnosis"
+rownames(c18diagnosis) <-row.names(total_c18metabolites)
+c18Age <- as_data_frame(total_c18metabolites$Age)
+colnames(c18Age) <- "Age"
+rownames(c18Age) <-row.names(total_c18metabolites)
+c18diagnosis <- merge(c18Age, c18diagnosis, by=0)
+rownames(c18diagnosis) <- c18diagnosis[,1]
+c18diagnosis <-c18diagnosis[-c(1)]
+rownames(c18swappedsub) <- row.names(total_c18metabolites)
+c18diagnosis <- merge(c18diagnosis, c18swappedsub, by=0)
+rownames(c18diagnosis) <- c18diagnosis[,1]
+c18diagnosis <-c18diagnosis[-c(1)]
+diagnosisofc18 <- as.data.frame(total_c18metabolites$Diagnosis)
+CDdiagnosisofc18 = as.data.frame(diagnosisofc18[total_c18metabolites$Diagnosis == "CD", ])
+nonBDdiagnosisofc18 = as.data.frame(diagnosisofc18[total_c18metabolites$Diagnosis == "nonIBD", ])
+UCdiagnosisofc18 = as.data.frame(diagnosisofc18[total_c18metabolites$Diagnosis == "UC", ])
+
+CDdiagnosisofc18color<- merge(CDdiagnosisofc18, "red")
+colnames(CDdiagnosisofc18color) <- c("Diagnosis", "Color")
+nonBDdiagnosisofc18color<- merge(nonBDdiagnosisofc18, "green")
+colnames(nonBDdiagnosisofc18color) <- c("Diagnosis", "Color")
+UCdiagnosisofc18color<- merge(UCdiagnosisofc18, "blue")
+colnames(UCdiagnosisofc18color) <- c("Diagnosis", "Color")
+
+metaboliteswithcolor <- rbind(CDdiagnosisofc18color, nonBDdiagnosisofc18color,UCdiagnosisofc18color)
+
+C18named1= str(C18named)
+C18factors1 = str(C18factors)
+
+
+```
