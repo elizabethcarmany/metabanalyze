@@ -2,7 +2,6 @@
 title: "Metabanalyze"
 author: "Elizabeth Carmany"
 date: "3/22/2021"
-output: html_document
 ---
 
 ```{r setup, include=FALSE}
