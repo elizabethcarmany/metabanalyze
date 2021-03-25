@@ -74,7 +74,9 @@ metabanalyze::lineplot_ec(metabolitec18sample, xvar=metabolitec18sample$Age, yva
     ## Saving 7 x 5 in image
 
 ![](Metabanalyze_files/figure-markdown_github/unnamed-chunk-4-1.png)
-\#\# Boxplot
+
+Boxplot
+---------
 
 ``` r
 metabanalyze::boxplot_ec(total_c18metabolites, yvar= total_c18metabolites$hydrocinnamate, fill=total_c18metabolites$Diagnosis, notch=TRUE, widthnotch = .8, legend = TRUE, xlabel = "Diagnosis", ylabel ="Number of Samples Containing Hydrocinnamate", title ="Data Hydrocinnamate Samples Separated by Diagnosis")
