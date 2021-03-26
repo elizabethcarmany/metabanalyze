@@ -51,6 +51,8 @@ metabanalyze::heatmap_ec(dataset=as.matrix(C18namedclean2), rowdendrogram = NA, 
 
 ![](Metabanalyze_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
+![unnamed-chunk-2-1](https://user-images.githubusercontent.com/74629105/112684637-aeb84200-8e49-11eb-9d6a-c7bee37534ef.png)
+
     ## integer(0)
 
 PCA plot
@@ -64,6 +66,9 @@ metabanalyze::pcaplot_ec(c18swapped.pca, ellipse=TRUE, groupedby = total_c18meta
 
 ![](Metabanalyze_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
+![unnamed-chunk-3-1](https://user-images.githubusercontent.com/74629105/112688866-dca08500-8e4f-11eb-9a12-9befa45bf2a6.png)
+
+
 Line Plot
 ---------
 
@@ -74,6 +79,8 @@ metabanalyze::lineplot_ec(metabolitec18sample, xvar=metabolitec18sample$Age, yva
     ## Saving 7 x 5 in image
 
 ![](Metabanalyze_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![unnamed-chunk-4-1](https://user-images.githubusercontent.com/74629105/112688995-0fe31400-8e50-11eb-9c8c-66396c82f52f.png)
+
 
 Boxplot
 ---------
@@ -85,3 +92,5 @@ metabanalyze::boxplot_ec(total_c18metabolites, yvar= total_c18metabolites$hydroc
     ## Saving 7 x 5 in image
 
 ![](Metabanalyze_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![unnamed-chunk-5-1](https://user-images.githubusercontent.com/74629105/112689045-1ec9c680-8e50-11eb-91bd-9479761608e3.png)
+
